@@ -1,0 +1,29 @@
+#Code for Bubble sort 
+#Along with printing maximum marks from the given input
+
+n = int(input("Enter toatl number of elements\n",))
+marks =[]
+print("Enter array elements\n")
+for i in range(n):
+    ele = float(input())
+    marks.append(ele)
+print(marks)
+
+def bubble():
+    for i in range(n):
+        for j in range(n-1):
+            if(marks[j+1]<marks[j]):
+                temp = marks[j+1]
+                marks[j+1] = marks[j]
+                marks[j] = temp
+    return marks
+
+def maximum():
+    for i in range(n-1):
+        high = marks[i]
+        if(marks[i] < marks[i+1]):
+            high = marks[i+1]
+    return high
+
+print(bubble())
+print("Highest marks are:",maximum())
