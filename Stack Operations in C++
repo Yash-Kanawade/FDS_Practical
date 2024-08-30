@@ -1,0 +1,53 @@
+//Stack Operation(Push & Pop)
+
+
+#include<iostream>
+
+
+class stack
+{
+    public:
+
+        char arr[5];
+        int tos = -1;
+        void push(char c)
+        {
+            if(tos == sizeof(arr)-1)
+                std::cout<<"Stack is overflow"<<std::endl;
+            else
+            {
+                tos++;
+                arr[tos] = c;
+            }
+        }
+
+        void pop()
+        {
+            if (tos == -1) {
+            std::cout << "Stack is empty" << std::endl;
+        } else {
+            std::cout << "Element at index " << tos << " (" << arr[tos] << ") is deleted" << std::endl;
+            tos--;
+        }
+        }
+
+        void display()
+        {
+            for(int i = 0 ; i <= tos;i++)
+            {
+                std::cout<<arr[i]<<std::endl;
+            }
+        }
+};
+
+int main()
+{
+    stack obj;
+    obj.push('d');
+    obj.push('e');
+    obj.push('f');
+    obj.display();
+    obj.pop();
+    obj.display();
+    return 0;
+}
