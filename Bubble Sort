@@ -1,5 +1,6 @@
 #Code for Bubble sort 
 #Along with printing maximum marks from the given input
+#Also printing top 5 highest marks from given input
 
 n = int(input("Enter toatl number of elements\n",))
 marks =[]
@@ -27,3 +28,10 @@ def maximum():
 
 print(bubble())
 print("Highest marks are:",maximum())
+
+def top5():
+    for i in reversed(range(n-1)):
+        print(marks[i])
+        if(i == n-6):
+            break;
+top5()
