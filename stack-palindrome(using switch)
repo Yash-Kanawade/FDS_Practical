@@ -1,0 +1,102 @@
+//Stack Operation(Push & Pop)
+
+
+#include<iostream>
+
+
+class stack
+{
+    public:
+
+        char arr[5];
+        int tos = -1;
+        void push(char c)
+        {
+            if(tos == sizeof(arr)-1)
+                std::cout<<"Stack is overflow"<<std::endl;
+            else
+            {
+                tos++;
+                arr[tos] = c;
+            }
+        }
+																																																					
+        void pop()
+        {
+            if (tos == -1) {
+            std::cout << "Stack is empty" << std::endl;
+        } else {
+            std::cout << "Element at index " << tos << " (" << arr[tos] << ") is deleted" << std::endl;
+            tos--;
+        }
+        }
+
+        void display()
+        {
+            for(int i = 0 ; i <= tos;i++)
+            {
+                std::cout<<arr[i]<<std::endl;
+            }
+        }
+
+        int palindrome()
+        {
+            int i = 0 , j = tos, flag;
+            for(i , j; i <= tos/2 , j >= tos/2 ; i++ , j--)
+            {
+                if(arr[i] == arr[j])
+                    flag = 1;
+                else
+                    {
+                        flag = 0;
+                        break;
+                    }
+            }
+            return flag;
+        }
+};
+int main() {
+    stack obj;
+    int choice;
+
+    do {
+        std::cout << "*****MENU*****" << std::endl;
+        std::cout << "Enter 1 for push" << std::endl;
+        std::cout << "Enter 2 for pop" << std::endl;
+        std::cout << "Enter 3 for display" << std::endl;
+        std::cout << "Enter 4 for palindrome" << std::endl;
+        std::cout << "0 to exit" << std::endl;
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                std::cout << "Enter character to push" << std::endl;
+                char temp;
+                std::cin >> temp;
+                obj.push(temp);
+                std::cout << "Element pushed successfully" << std::endl;
+                break;
+            case 2:
+                obj.pop();
+                break;
+            case 3:
+                obj.display();
+                break;
+            case 4:
+                if (obj.palindrome()) {
+                    std::cout << "The stack is a palindrome" << std::endl;
+                } else {
+                    std::cout << "The stack is not a palindrome" << std::endl;
+                }
+                break;
+            case 0:
+                std::cout << "Exiting..." << std::endl;
+                break;
+            default:
+                std::cout << "Invalid choice, please try again." << std::endl;
+                break;
+        }
+    } while (choice != 0);
+
+    return 0;
+}
