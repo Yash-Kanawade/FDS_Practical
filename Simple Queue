@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std;
+class queue
+{
+    public :
+        int arr[5];
+        int front = -1;
+        int rear = -1;
+        void insert(int element)
+        {
+            if(rear == sizeof(arr)-1)
+            {
+                cout<<"Queue is full"<<endl;
+            }
+            else if(front ==-1)
+            {
+                front = 0;
+                rear = 0;
+                arr[rear] = element;
+            }
+            else
+            {
+                rear++;
+                arr[rear] = element;
+            }
+        }
+
+        void delet()
+        {
+            if(front == -1)
+            {
+                cout<<"Queue is empty"<<endl;
+            }
+            else
+            {
+                cout<<arr[front]<<"-is deleted"<<endl;
+                front++;
+                if(front == rear)
+                {
+                    front = rear = -1;
+                }
+            }
+        }
+
+        void display()
+        {
+            for(int i = front ; i <= rear ; i++)
+            {
+                cout<<arr[i]<<"->";
+            }
+            cout<<"\n";
+        }
+};
+
+int main()
+{
+    queue obj;
+    int choice;
+
+    do
+    {
+        cout<<"Enter 1 : to insert element"<<endl;
+        cout<<"Enter 2 : to delete element"<<endl;
+        cout<<"Enter 3 : to display elements"<<endl;
+        cout<<"Enter 0 to exit";
+        cout<<"Enter your choice :";
+        cin>>choice;
+    switch(choice)
+    {
+        case 1 : 
+            cout<<"Enter element to inserted"<<endl;
+            int element;
+            cin>>element;
+            cout<<"\n";
+            obj.insert(element);
+            cout<<"Element is inserted succesfully"<<endl;
+            break;
+        case 2 : obj.delet();
+            break;
+        case 3 : obj.display();
+            break;
+        default : cout<<"Queue ended here";
+    }
+}while(choice != 0);
+    return 0;
+}
